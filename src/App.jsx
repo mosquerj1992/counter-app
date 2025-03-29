@@ -1,28 +1,45 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { useState } from 'react';
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+
+  const initialValue = 1000
+  const [count, setCount] = useState(initialValue);
+
+  function decrement() {
+
+    console.log(count);
+    setCount((count) => count - 1);
+
+  }
+  function reset() {
+    console.log(count);
+    setCount(initialValue);
+  }
+
+  function increment(event) {
+    console.log(event);
+    setCount((count) => count + 1);
+  }
 
   return (
     <>
-      
-      <h1>Vite + React</h1>
+
+      <h1>Contador-App</h1>
+      <h3>El valor del contador es: {count}</h3>
+
+
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+        <button onClick={(event)=>decrement(event)}>reducir</button>
+        <button onClick={reset}>reiniciar</button>
+        <button onClick={increment}>incrementar</button>
+
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
     </>
-  )
-}
+  );
+};
 
 export default App
